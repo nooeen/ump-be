@@ -9,7 +9,7 @@ const { disconnect } = require("mongoose");
 const app = express();
 const io = require("socket.io")(3002, {
   cors: {
-    origin: ["http://localhost:3000"],
+    origin: ["https://ump-backend.herokuapp.com"],
   },
 });
 const users = {};
@@ -65,7 +65,7 @@ io.on("connection", (socket) => {
 });
 
 var corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://ump-backend.herokuapp.com",
 };
 
 app.use(express.urlencoded({ extended: true }));
