@@ -84,7 +84,7 @@ app.use(function (req, res, next) {
   );
   next();
 });
-app.use(cors(corsOptions));
+app.use(cors());
 
 db.connect();
 
