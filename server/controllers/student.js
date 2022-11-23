@@ -6,6 +6,38 @@ function rand_between(min, max) {
 }
 
 class studentController {
+  calculateGPAPostman(req, res) {
+    var english = req.body.english;
+    var math = req.body.math;
+    var literature = req.body.literature;
+    var result = "";
+    if (
+      math > 10 ||
+      math < 0 ||
+      literature > 10 ||
+      literature < 0 ||
+      english < 0 ||
+      english > 10
+    ) {
+      result = "Invalid";
+    } else if (math < 1 || literature < 1 || english < 1) {
+      result = "Fail";
+    } else if (math + literature + english >= 28) {
+      result = "Scholar";
+    } else if (math + literature + english >= 25) {
+      result = "Excellent";
+    } else if (math + literature + english >= 20) {
+      result = "Very Good";
+    } else if (math + literature + english >= 16) {
+      result = "Good";
+    } else if (math + literature + english >= 10) {
+      result ="OK";
+    } else {
+      result = "Fail";
+    }
+    res.status(200).send(result);
+  }
+
   getStudentStatistic(req, res) {
     if (req.query.class === "undefined") {
       return;
@@ -32,7 +64,7 @@ class studentController {
               }
             }
           }
-          term.Điểm = (gpa / users.length);
+          term.Điểm = gpa / users.length;
           term.name =
             "20" +
             term.name.split("_")[0] +

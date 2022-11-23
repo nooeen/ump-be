@@ -71,4 +71,6 @@ router.get("/credits", studentController.studentCredit);
 
 router.get("/statistic", studentController.getStudentStatistic);
 
+router.get("/calGPAPostman", studentController.calculateGPAPostman);
+
 module.exports = router;
